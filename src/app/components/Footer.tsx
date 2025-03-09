@@ -18,7 +18,7 @@ export default function Footer() {
               </div>
               <h3 className="text-xl font-bold text-purple-light">ENTROPIA BARBERSHOP</h3>
             </div>
-            <p className="mb-4">Najwyższej jakości usługi barberskie w Krośnie. Doświadcz sztuki strzyżenia z naszym zespołem ekspertów.</p>
+            <p className="mb-4">Najwyższa jakość usług barberskich w Krośnie. Doświadcz sztuki strzyżenia z naszym zespołem ekspertów.</p>
             <div className="flex gap-4">
               <a href="https://www.facebook.com/profile.php?id=61573591610150" target="_blank" rel="noopener noreferrer" className="hover:text-purple-light transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
