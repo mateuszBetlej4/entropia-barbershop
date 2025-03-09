@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // Add TypeScript declaration for Booksy
 declare global {
@@ -21,62 +21,47 @@ declare global {
 export default function BookingWidget() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [useIframe, setUseIframe] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Skip widget loading if using iframe
-    if (useIframe) return;
-
-    // Create Booksy widget script
-    const script = document.createElement('script');
-    script.src = 'https://booksy.com/widget/code.js';
-    script.async = true;
+    if (!containerRef.current) return;
     
-    // Handle script load success
-    script.onload = () => {
-      setIsLoaded(true);
+    // Clear any existing content
+    containerRef.current.innerHTML = '';
+    
+    try {
+      // Create the script element exactly as in the Booksy documentation
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = 'https://booksy.com/widget/code.js?id=286358&country=pl&lang=pl';
+      script.async = true;
       
-      // Initialize widget when script loads
-      try {
-        if (window.Booksy) {
-          window.Booksy.widget({
-            id: '286358', // Entropia Barbershop ID
-            type: 'booksy-services',
-            lang: 'pl',
-            theme: 'dark',
-            width: '100%',
-            container: 'booksy-widget-container'
-          });
-          console.log('Booksy widget initialized');
-        } else {
-          setError('Booksy widget not available after loading script');
-          console.error('Booksy widget not available after loading script');
-        }
-      } catch (err) {
-        setError(`Error initializing Booksy widget: ${err instanceof Error ? err.message : String(err)}`);
-        console.error('Error initializing Booksy widget:', err);
-      }
-    };
+      // Handle script load success
+      script.onload = () => {
+        setIsLoaded(true);
+        console.log('Booksy widget script loaded successfully');
+      };
+      
+      // Handle script load error
+      script.onerror = () => {
+        setError('Failed to load Booksy widget script');
+        console.error('Failed to load Booksy widget script');
+      };
+      
+      // Append the script directly to the container
+      containerRef.current.appendChild(script);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error loading widget');
+      console.error('Error setting up Booksy widget:', err);
+    }
     
-    // Handle script load error
-    script.onerror = (e) => {
-      setError('Failed to load Booksy widget script');
-      console.error('Failed to load Booksy widget script:', e);
-    };
-    
-    // Add script to document
-    document.body.appendChild(script);
-    
-    // Cleanup on unmount
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
+      // Cleanup on unmount
+      if (containerRef.current) {
+        containerRef.current.innerHTML = '';
       }
-      // Remove any Booksy elements that might have been created
-      const booksyElements = document.querySelectorAll('[id^="booksy-"]');
-      booksyElements.forEach(el => el.remove());
     };
-  }, [useIframe]);
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -90,72 +75,37 @@ export default function BookingWidget() {
         Wybierz usługę, termin i barbera bezpośrednio poniżej.
       </p>
       
-      {/* Toggle between widget and direct link */}
-      <div className="mb-4">
-        <button 
-          onClick={() => setUseIframe(false)} 
-          className={`px-4 py-2 mr-2 rounded-md ${!useIframe ? 'bg-purple text-white' : 'bg-gray-700 text-gray-300'}`}
-          style={{ backgroundColor: !useIframe ? "#5E1A64" : "#27272A" }}
-        >
-          Widget Booksy
-        </button>
-        <button 
-          onClick={() => setUseIframe(true)} 
-          className={`px-4 py-2 rounded-md ${useIframe ? 'bg-purple text-white' : 'bg-gray-700 text-gray-300'}`}
-          style={{ backgroundColor: useIframe ? "#5E1A64" : "#27272A" }}
-        >
-          Strona Booksy
-        </button>
-      </div>
-      
       {/* Booksy widget container */}
-      {!useIframe ? (
-        <div 
-          id="booksy-widget-container" 
-          className="w-full max-w-3xl mx-auto mb-6 rounded-md overflow-hidden"
-          style={{ 
-            backgroundColor: "#2D0A31", 
-            color: "#FFFFFF",
-            minHeight: "400px"
-          }}
-        >
-          {!isLoaded && !error && (
-            <div className="flex items-center justify-center h-64">
-              <p className="text-white">Ładowanie widgetu rezerwacji...</p>
-            </div>
-          )}
-          
-          {error && (
-            <div className="flex flex-col items-center justify-center h-64 p-4">
-              <p className="text-red-500 mb-4">Wystąpił problem z ładowaniem widgetu Booksy.</p>
-              <a 
-                href="https://booksy.com/pl-pl/286358_entropia-barbershop-szymon-rechziegel_barber-shop_11352_krosno" 
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="inline-block bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-sm transition-colors"
-                style={{ backgroundColor: "#5E1A64", color: "#FFFFFF" }}
-              >
-                Przejdź do Booksy
-              </a>
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="w-full max-w-3xl mx-auto mb-6 rounded-md overflow-hidden" style={{ height: "600px" }}>
-          <a 
-            href="https://booksy.com/pl-pl/286358_entropia-barbershop-szymon-rechziegel_barber-shop_11352_krosno" 
-            target="_blank"
-            rel="noopener noreferrer" 
-            className="inline-block bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-sm transition-colors mb-4"
-            style={{ backgroundColor: "#5E1A64", color: "#FFFFFF" }}
-          >
-            Otwórz Booksy w nowej karcie
-          </a>
-          <p className="text-gray-300 mb-4 text-sm">
-            Niestety, Booksy nie pozwala na bezpośrednie osadzenie ich strony w ramce. Kliknij przycisk powyżej, aby przejść do strony rezerwacji.
-          </p>
-        </div>
-      )}
+      <div 
+        ref={containerRef}
+        className="w-full max-w-3xl mx-auto mb-6 rounded-md overflow-hidden"
+        style={{ 
+          backgroundColor: "#2D0A31", 
+          color: "#FFFFFF",
+          minHeight: "500px"
+        }}
+      >
+        {!isLoaded && !error && (
+          <div className="flex items-center justify-center h-64">
+            <p className="text-white">Ładowanie widgetu rezerwacji...</p>
+          </div>
+        )}
+        
+        {error && (
+          <div className="flex flex-col items-center justify-center h-64 p-4">
+            <p className="text-red-500 mb-4">Wystąpił problem z ładowaniem widgetu Booksy.</p>
+            <a 
+              href="https://booksy.com/pl-pl/286358_entropia-barbershop-szymon-rechziegel_barber-shop_11352_krosno" 
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="inline-block bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-sm transition-colors"
+              style={{ backgroundColor: "#5E1A64", color: "#FFFFFF" }}
+            >
+              Przejdź do Booksy
+            </a>
+          </div>
+        )}
+      </div>
       
       <p className="text-gray-400 text-sm">
         Powered by Booksy - system rezerwacji online dla salonów.

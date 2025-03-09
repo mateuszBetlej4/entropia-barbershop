@@ -89,7 +89,8 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} Entropia Barbershop Szymon Rechziegel. Wszelkie prawa zastrzeżone.</p>
           <p className="mt-2">
             <Link href="/polityka-prywatnosci" className="hover:text-purple-light transition-colors mr-4" style={{ color: "white" }}>Polityka Prywatności</Link>
-            <Link href="/regulamin" className="hover:text-purple-light transition-colors" style={{ color: "white" }}>Regulamin</Link>
+            <Link href="/regulamin" className="hover:text-purple-light transition-colors mr-4" style={{ color: "white" }}>Regulamin</Link>
+            <Link href="/admin" className="hover:text-purple-light transition-colors" style={{ color: "white" }}>Panel Administracyjny</Link>
           </p>
         </div>
       </div>

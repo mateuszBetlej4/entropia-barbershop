@@ -48,6 +48,9 @@ export default function Navbar() {
             <Link href="/" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
               Strona główna
             </Link>
+            <Link href="/aktualnosci" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
+              Aktualności
+            </Link>
             <Link href="/uslugi" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
               Usługi
             </Link>
@@ -92,6 +95,14 @@ export default function Navbar() {
                 style={{ color: "#F8F8F8" }}
               >
                 Strona główna
+              </Link>
+              <Link 
+                href="/aktualnosci" 
+                className="text-white hover:text-purple-light transition-colors py-3 px-6"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{ color: "#F8F8F8" }}
+              >
+                Aktualności
               </Link>
               <Link 
                 href="/uslugi" 

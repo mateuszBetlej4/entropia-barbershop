@@ -127,17 +127,26 @@ export default function ServicesPage() {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-white mb-4">Zarezerwuj wizytę online</h3>
-            <p className="text-gray-300 mb-6 max-w-lg">Kliknij poniższy przycisk, aby przejść do systemu rezerwacji Booksy i zarezerwować wizytę w dogodnym dla Ciebie terminie.</p>
-            <a 
-              href="https://booksy.com/pl-pl/286358_entropia-barbershop-szymon-rechziegel_barber-shop_11352_krosno" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-md transition-colors mb-4"
-              style={{ backgroundColor: "#5E1A64", color: "#FFFFFF" }}
-            >
-              Przejdź do Booksy
-            </a>
-            <p className="text-gray-400 text-sm">Zostaniesz przekierowany do systemu rezerwacji Booksy, gdzie możesz wybrać usługę, termin i barberów.</p>
+            <p className="text-gray-300 mb-6 max-w-lg">
+              Wybierz usługę, termin i barbera bezpośrednio poniżej.
+            </p>
+            
+            {/* Booksy widget container */}
+            <div className="w-full max-w-3xl mx-auto mb-6">
+              {/* This will be replaced by the Booksy script */}
+              <div id="booksy-widget-container" style={{ minHeight: "500px" }}></div>
+              
+              {/* Booksy script - added directly to the page */}
+              <script 
+                type="text/javascript" 
+                src="https://booksy.com/widget/code.js?id=286358&country=pl&lang=pl"
+                async
+              ></script>
+            </div>
+            
+            <p className="text-gray-400 text-sm">
+              Powered by Booksy - system rezerwacji online dla salonów.
+            </p>
           </div>
         </div>
       </div>

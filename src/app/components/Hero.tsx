@@ -53,6 +53,16 @@ export default function Hero() {
           >
             Nasze Usługi
           </Link>
+          <Link 
+            href="/aktualnosci" 
+            className="border border-purple-light hover:bg-purple-light hover:text-white font-medium py-3 px-8 rounded-sm transition-colors"
+            style={{ 
+              borderColor: "#8A3793", 
+              color: "#FFFFFF"
+            }}
+          >
+            Aktualności
+          </Link>
         </div>
       </div>
     </section>
