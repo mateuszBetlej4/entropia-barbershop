@@ -118,20 +118,27 @@ export default function ServicesPage() {
           </div>
         ))}
         
-        <div className="mt-16 p-6 bg-neutral rounded-md" style={{ backgroundColor: "#3A2A3C" }}>
-          <h2 className="text-2xl font-bold text-white mb-4" style={{ color: "#FFFFFF" }}>Rezerwacja</h2>
-          <p className="text-gray-300 mb-6" style={{ color: "#E5DCE6" }}>
-            Zarezerwuj wizytę online przez Booksy lub zadzwoń do nas pod numer +48 666 666 666.
-          </p>
-          <a 
-            href="https://booksy.com/pl-pl/286358_entropia-barbershop-szymon-rechziegel_barber-shop_11352_krosno" 
-            target="_blank"
-            rel="noopener noreferrer" 
-            className="inline-block bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-sm transition-colors"
-            style={{ backgroundColor: "#5E1A64", color: "#FFFFFF" }}
-          >
-            Zarezerwuj na Booksy
-          </a>
+        {/* Sekcja rezerwacji */}
+        <div className="bg-zinc-900 rounded-md overflow-hidden p-8 text-center">
+          <div className="flex flex-col items-center justify-center">
+            <div className="text-purple-light mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold text-white mb-4">Zarezerwuj wizytę online</h3>
+            <p className="text-gray-300 mb-6 max-w-lg">Kliknij poniższy przycisk, aby przejść do systemu rezerwacji Booksy i zarezerwować wizytę w dogodnym dla Ciebie terminie.</p>
+            <a 
+              href="https://booksy.com/pl-pl/286358_entropia-barbershop-szymon-rechziegel_barber-shop_11352_krosno" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-md transition-colors mb-4"
+              style={{ backgroundColor: "#5E1A64", color: "#FFFFFF" }}
+            >
+              Przejdź do Booksy
+            </a>
+            <p className="text-gray-400 text-sm">Zostaniesz przekierowany do systemu rezerwacji Booksy, gdzie możesz wybrać usługę, termin i barberów.</p>
+          </div>
         </div>
       </div>
     </main>
