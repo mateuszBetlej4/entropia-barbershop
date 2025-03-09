@@ -21,8 +21,6 @@ export default function SocialMediaPost({
 }: SocialMediaPostProps) {
   const [formattedDate, setFormattedDate] = useState(date);
   const instagramRef = useRef<HTMLDivElement>(null);
-  const facebookRef = useRef<HTMLDivElement>(null);
-  const [embedLoaded, setEmbedLoaded] = useState(false);
   const [embedError, setEmbedError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -57,7 +55,6 @@ export default function SocialMediaPost({
           script.defer = true;
           script.onload = () => {
             console.log('Instagram script loaded successfully');
-            setEmbedLoaded(true);
             if (window.instgrm && instagramRef.current) {
               try {
                 console.log('Processing Instagram embed...');
@@ -80,7 +77,6 @@ export default function SocialMediaPost({
           console.log('Instagram script already exists, processing embed...');
           try {
             window.instgrm.Embeds.process(instagramRef.current);
-            setEmbedLoaded(true);
           } catch (processError) {
             console.error('Error processing existing Instagram embed:', processError);
             setEmbedError('Error processing embed: ' + String(processError));
@@ -105,7 +101,6 @@ export default function SocialMediaPost({
         
         // No need to load the Facebook SDK for iframe embeds
         // Just make sure the iframe is properly rendered
-        setEmbedLoaded(true);
       } catch (error) {
         console.error('Error setting up Facebook embed:', error);
         setEmbedError('Setup error: ' + String(error));
