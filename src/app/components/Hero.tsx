@@ -18,22 +18,6 @@ export default function Hero() {
       </div>
       
       <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="relative h-20 w-20 md:h-24 md:w-24">
-            <Image 
-              src="/images/entropia-barbershop-logo.jpg" 
-              alt="Entropia Barbershop Logo" 
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 80px, 96px"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-3xl md:text-4xl font-bold text-purple-light">ENTROPIA</span>
-            <span className="text-lg md:text-xl uppercase tracking-widest">Barbershop</span>
-          </div>
-        </div>
-        
         <h1 className="text-5xl md:text-7xl font-bold max-w-2xl">
           Poczuj sztukę <span className="text-purple-light">Barbierstwa</span>
         </h1>
