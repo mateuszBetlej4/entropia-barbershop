@@ -31,11 +31,11 @@ const featuredServices = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 bg-zinc-950">
+    <section className="py-20 bg-zinc-950" style={{ backgroundColor: "#09090B" }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Nasze Usługi</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ color: "#FFFFFF" }}>Nasze Usługi</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto" style={{ color: "#9CA3AF" }}>
             Oferujemy pełen zakres profesjonalnych usług barberskich, łączących tradycyjne techniki z nowoczesnymi trendami.
           </p>
         </div>
@@ -50,6 +50,10 @@ export default function ServicesSection() {
           <Link 
             href="/uslugi" 
             className="inline-block border border-purple-light text-purple-light hover:bg-purple-light hover:text-white font-medium py-3 px-8 rounded-sm transition-colors"
+            style={{ 
+              borderColor: "#8A3793", 
+              color: "#8A3793" 
+            }}
           >
             Zobacz wszystkie usługi
           </Link>

@@ -46,7 +46,35 @@
   background-image: linear-gradient(to bottom, #2D0A31, #5E1A64, #8A3793) !important;
 }
 
-@theme inline {
+/* Additional hover effects for links */
+a.hover\:text-white:hover {
+  color: #FFFFFF !important;
+}
+
+a.hover\:bg-purple-light:hover {
+  background-color: #8A3793 !important;
+}
+
+/* Button hover effects */
+.bg-purple.hover\:bg-purple-light:hover {
+  background-color: #8A3793 !important;
+}
+
+.border-purple-light.hover\:bg-purple-light:hover {
+  background-color: #8A3793 !important;
+  color: #FFFFFF !important;
+}
+
+.bg-primary.hover\:bg-accent:hover {
+  background-color: #5E1A64 !important;
+}
+
+.hover\:bg-accent:hover.hover\:text-primary:hover {
+  color: #2D0A31 !important;
+}
+
+/* Custom properties for theme consistency */
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
@@ -55,21 +83,8 @@
   --color-purple-dark: var(--purple-dark);
   --color-neutral: var(--neutral);
   --color-light-neutral: var(--light-neutral);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #2D0A31;
-    --foreground: #F8F8F8;
-    --accent: #8A3793;
-    --purple-light: #8A3793;
-    --purple: #5E1A64;
-    --purple-dark: #2D0A31;
-    --neutral: #3A2A3C;
-    --light-neutral: #E5DCE6;
-  }
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 body {
