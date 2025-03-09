@@ -1,33 +1,44 @@
+"use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  // Usuwamy sprawdzanie obrazu tła, zamiast tego zawsze używamy gradientu
+  
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-r from-black to-gray-900 text-white">
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+    <section className="relative h-[80vh] bg-black text-white">
+      {/* Używamy gradientu zamiast obrazu tła */}
+      <div className="absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-800 to-black opacity-90">
+        {/* Możemy dodać dekoracyjny wzór */}
+        <div className="absolute inset-0 opacity-10" style={{ 
+          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)',
+          backgroundSize: '20px 20px'
+        }}></div>
+      </div>
       
-      <div className="container-custom relative z-10 text-center py-20">
-        <h1 className="heading-xl mb-6 text-white">
-          Odkryj sztukę <span className="text-accent">barbering</span>
+      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
+        <h1 className="text-5xl md:text-7xl font-bold max-w-2xl">
+          Poczuj sztukę <span className="text-amber-400">Barbierstwa</span>
         </h1>
-        <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-10 text-gray-200">
-          Oferujemy usługi najwyższej jakości, które podkreślą Twój styl i dodadzą pewności siebie. 
-          Stworzone przez ekspertów w Krośnie.
+        <p className="mt-6 text-xl max-w-xl text-gray-200">
+          Najwyższej jakości usługi barberskie, które podkreślą Twój styl i pewność siebie. Stworzone przez ekspertów w Krośnie.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link
-            href="/#booking"
-            className="btn-primary text-lg py-3 px-8"
+        <div className="mt-10 flex flex-wrap gap-4">
+          <Link 
+            href="/rezerwacja" 
+            className="bg-amber-500 hover:bg-amber-600 text-black font-medium py-3 px-8 rounded-sm transition-colors"
           >
-            Zarezerwuj wizytę
+            Zarezerwuj Wizytę
           </Link>
-          <Link
-            href="/#services"
-            className="btn-secondary text-lg py-3 px-8"
+          <Link 
+            href="/uslugi" 
+            className="border border-white hover:bg-white hover:text-black font-medium py-3 px-8 rounded-sm transition-colors"
           >
-            Zobacz nasze usługi
+            Nasze Usługi
           </Link>
         </div>
       </div>
     </section>
   );
-}
+} 

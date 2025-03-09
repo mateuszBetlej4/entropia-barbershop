@@ -1,95 +1,95 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
-const team = [
+interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  imageSrc: string;
+  instagram?: string;
+}
+
+const teamMembers: TeamMember[] = [
   {
-    id: 1,
-    name: "Adam Kowalski",
-    role: "Główny Barber / Właściciel",
-    bio: "Z ponad 8-letnim doświadczeniem, Adam jest ekspertem w klasycznych technikach strzyżenia i stylizacji brody.",
-    image: "/images/barber-1.jpg",
-    specialties: ["Strzyżenie klasyczne", "Golenie brzytwą", "Stylizacja brody"],
+    id: "szymon",
+    name: "Szymon Rechziegel",
+    role: "Założyciel & Główny Barber",
+    bio: "Pasjonat barbierstwa z wieloletnim doświadczeniem. Specjalizuje się w klasycznych strzyżeniach i stylizacji brody.",
+    imageSrc: "/images/barber-1.jpg",
+    instagram: "https://www.instagram.com/lvcy_fair/"
   },
   {
-    id: 2,
-    name: "Piotr Nowak",
+    id: "krystian",
+    name: "Krystian",
     role: "Senior Barber",
-    bio: "Piotr specjalizuje się w nowoczesnych fryzurach męskich i precyzyjnym modelowaniu brody.",
-    image: "/images/barber-2.jpg",
-    specialties: ["Nowoczesne fryzury", "Koloryzacja", "Trymowanie brody"],
-  },
-  {
-    id: 3,
-    name: "Michał Wiśniewski",
-    role: "Barber",
-    bio: "Michał to mistrz precyzyjnych cięć i kreatywnych stylizacji, który dołączył do naszego zespołu 2 lata temu.",
-    image: "/images/barber-3.jpg",
-    specialties: ["Fade", "Strzyżenie maszynką", "Stylizacja włosów"],
-  },
+    bio: "Ekspert w nowoczesnych fryzurach męskich i precyzyjnym modelowaniu zarostu. Uwielbia eksperymentować z nowymi stylami.",
+    imageSrc: "/images/barber-2.jpg",
+    instagram: "https://www.instagram.com/_maniek_2002/"
+  }
 ];
 
 export default function TeamSection() {
-  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
-
-  const handleImageError = (id: number) => {
-    setImageErrors((prev) => ({ ...prev, [id]: true }));
+  // Stan dla błędów obrazów
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  
+  // Funkcja obsługująca błędy ładowania obrazów
+  const handleImageError = (id: string) => {
+    setImageErrors(prev => ({
+      ...prev,
+      [id]: true
+    }));
   };
-
+  
   return (
-    <section id="team" className="section-padding bg-primary text-white">
-      <div className="container-custom">
+    <section className="py-20 bg-zinc-950">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="heading-lg mb-4">
-            Nasz <span className="text-accent">Zespół</span>
-          </h2>
-          <p className="text-gray-300 max-w-3xl mx-auto">
-            Poznaj profesjonalistów, którzy zadbają o Twój wygląd. Nasz zespół to doświadczeni barberzy z pasją do swojego rzemiosła.
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Nasz Zespół</h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Poznaj ekspertów, którzy zadbają o Twój wygląd. Nasz zespół łączy rzemieślnicze podejście z nowoczesnymi umiejętnościami.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {team.map((member) => (
-            <div
-              key={member.id}
-              className="bg-gray-900 rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105"
-            >
-              <div className="relative h-80">
-                {!imageErrors[member.id] ? (
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    style={{ objectFit: "cover" }}
-                    onError={() => handleImageError(member.id)}
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gray-800 text-center p-4">
-                    <p className="text-gray-400">{member.name}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {teamMembers.map((member) => (
+            <div key={member.id} className="bg-zinc-900 rounded-md overflow-hidden group">
+              <div className="relative h-80 overflow-hidden">
+                {/* Fallback dla obrazu */}
+                {imageErrors[member.id] && (
+                  <div className="absolute inset-0 bg-zinc-800 flex flex-col items-center justify-center p-4">
+                    <div className="text-amber-400 text-2xl font-bold mb-2">{member.name}</div>
+                    <div className="text-white text-sm">{member.role}</div>
                   </div>
                 )}
+                <Image 
+                  src={member.imageSrc} 
+                  alt={member.name}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={() => handleImageError(member.id)}
+                  unoptimized={true} // Wyłączamy optymalizację obrazów
+                />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-accent mb-4">{member.role}</p>
+                <h3 className="text-xl font-bold text-white">{member.name}</h3>
+                <p className="text-amber-400 mb-3">{member.role}</p>
                 <p className="text-gray-300 mb-4">{member.bio}</p>
-                <div>
-                  <h4 className="text-sm font-bold uppercase text-gray-400 mb-2">
-                    Specjalizacje:
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {member.specialties.map((specialty) => (
-                      <span
-                        key={specialty}
-                        className="bg-gray-800 text-xs px-3 py-1 rounded-full text-gray-300"
-                      >
-                        {specialty}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                {member.instagram && (
+                  <a 
+                    href={member.instagram} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center text-gray-400 hover:text-amber-400 transition-colors"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="mr-2">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                    Instagram
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -97,4 +97,4 @@ export default function TeamSection() {
       </div>
     </section>
   );
-}
+} 
