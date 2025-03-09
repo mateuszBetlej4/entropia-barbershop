@@ -98,18 +98,18 @@ const categorizedServices = {
 
 export default function ServicesPage() {
   return (
-    <main className="py-16 bg-zinc-950">
+    <main className="py-16 bg-zinc-950" style={{ backgroundColor: "#09090B" }}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Nasze Usługi</h1>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ color: "#FFFFFF" }}>Nasze Usługi</h1>
+          <p className="text-gray-400 max-w-2xl mx-auto" style={{ color: "#9CA3AF" }}>
             Oferujemy szeroki zakres profesjonalnych usług barberskich, które pozwolą Ci wyglądać i czuć się najlepiej. Każda usługa zawiera konsultację i precyzyjne wykonanie przez doświadczonych barberów.
           </p>
         </div>
 
         {Object.entries(categorizedServices).map(([category, items]) => (
           <div key={category} className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 pb-2 border-b border-zinc-800">{category}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 pb-2 border-b border-purple-light" style={{ color: "#FFFFFF", borderColor: "#8A3793" }}>{category}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {items.map((service) => (
                 <ServiceCard key={service.id} {...service} />
@@ -117,6 +117,22 @@ export default function ServicesPage() {
             </div>
           </div>
         ))}
+        
+        <div className="mt-16 p-6 bg-neutral rounded-md" style={{ backgroundColor: "#3A2A3C" }}>
+          <h2 className="text-2xl font-bold text-white mb-4" style={{ color: "#FFFFFF" }}>Rezerwacja</h2>
+          <p className="text-gray-300 mb-6" style={{ color: "#E5DCE6" }}>
+            Zarezerwuj wizytę online przez Booksy lub zadzwoń do nas pod numer +48 666 666 666.
+          </p>
+          <a 
+            href="https://booksy.com/pl-pl/286358_entropia-barbershop-szymon-rechziegel_barber-shop_11352_krosno" 
+            target="_blank"
+            rel="noopener noreferrer" 
+            className="inline-block bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-sm transition-colors"
+            style={{ backgroundColor: "#5E1A64", color: "#FFFFFF" }}
+          >
+            Zarezerwuj na Booksy
+          </a>
+        </div>
       </div>
     </main>
   );

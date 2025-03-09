@@ -17,11 +17,11 @@ export default function ServiceCard({ title, description, price, duration, image
   const [imageError, setImageError] = useState(false);
   
   // Domyślny obraz zastępczy - używamy statycznego obrazu z Next.js
-  const placeholderImage = "/next.svg";
+  const placeholderImage = "/images/service-placeholder.jpg";
   
   return (
     <div className="bg-neutral rounded-md overflow-hidden group" style={{ backgroundColor: "#3A2A3C" }}>
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative w-full" style={{ paddingTop: "66.67%" }}>  {/* 3:2 aspect ratio for more vertical space */}
         {/* Używamy statycznego obrazu z Next.js jako fallback */}
         <div 
           className="absolute inset-0 bg-primary flex items-center justify-center"
@@ -36,7 +36,9 @@ export default function ServiceCard({ title, description, price, duration, image
           src={imageError ? placeholderImage : (imageSrc || placeholderImage)} 
           alt={title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-300"
+          style={{ objectPosition: "center 30%" }} // Position slightly above center to avoid cutting off tops
           onError={() => setImageError(true)}
           unoptimized={true} // Wyłączamy optymalizację obrazów, aby uniknąć problemów z placeholderami
         />
