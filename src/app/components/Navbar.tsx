@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="w-full bg-primary text-secondary relative z-50">
+      <header className="w-full bg-primary text-secondary relative z-50" style={{ backgroundColor: "#2D0A31", color: "#F8F8F8" }}>
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 relative z-20">
             <div className="relative h-12 w-12 md:h-14 md:w-14">
@@ -39,25 +39,25 @@ export default function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-purple-light">ENTROPIA</span>
-              <span className="text-sm uppercase tracking-widest">Barbershop</span>
+              <span className="font-bold text-xl text-purple-light" style={{ color: "#8A3793" }}>ENTROPIA</span>
+              <span className="text-sm uppercase tracking-widest" style={{ color: "#F8F8F8" }}>Barbershop</span>
             </div>
           </Link>
           
           <div className="hidden md:flex gap-8">
-            <Link href="/" className="hover:text-purple-light transition-colors">
+            <Link href="/" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
               Strona główna
             </Link>
-            <Link href="/uslugi" className="hover:text-purple-light transition-colors">
+            <Link href="/uslugi" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
               Usługi
             </Link>
-            <Link href="/o-nas" className="hover:text-purple-light transition-colors">
+            <Link href="/o-nas" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
               O nas
             </Link>
-            <Link href="/rezerwacja" className="hover:text-purple-light transition-colors">
+            <Link href="/rezerwacja" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
               Rezerwacja
             </Link>
-            <Link href="/kontakt" className="hover:text-purple-light transition-colors">
+            <Link href="/kontakt" className="hover:text-purple-light transition-colors" style={{ color: "#F8F8F8" }}>
               Kontakt
             </Link>
           </div>
@@ -66,6 +66,7 @@ export default function Navbar() {
             className="md:hidden z-50" 
             onClick={toggleMobileMenu}
             aria-label={mobileMenuOpen ? "Zamknij menu" : "Otwórz menu"}
+            style={{ color: "#F8F8F8" }}
           >
             {mobileMenuOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
@@ -81,13 +82,14 @@ export default function Navbar() {
       </header>
       
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-0 left-0 w-full h-full bg-primary z-40 md:hidden" style={{ backgroundColor: '#2D0A31' }}>
+        <div className="fixed inset-0 top-0 left-0 w-full h-full z-40 md:hidden" style={{ backgroundColor: '#2D0A31' }}>
           <div className="h-full w-full flex flex-col items-center justify-center pt-16">
             <div className="flex flex-col items-center gap-8 text-xl">
               <Link 
                 href="/" 
                 className="text-white hover:text-purple-light transition-colors py-3 px-6"
                 onClick={() => setMobileMenuOpen(false)}
+                style={{ color: "#F8F8F8" }}
               >
                 Strona główna
               </Link>
@@ -95,6 +97,7 @@ export default function Navbar() {
                 href="/uslugi" 
                 className="text-white hover:text-purple-light transition-colors py-3 px-6"
                 onClick={() => setMobileMenuOpen(false)}
+                style={{ color: "#F8F8F8" }}
               >
                 Usługi
               </Link>
@@ -102,6 +105,7 @@ export default function Navbar() {
                 href="/o-nas" 
                 className="text-white hover:text-purple-light transition-colors py-3 px-6"
                 onClick={() => setMobileMenuOpen(false)}
+                style={{ color: "#F8F8F8" }}
               >
                 O nas
               </Link>
@@ -109,6 +113,7 @@ export default function Navbar() {
                 href="/rezerwacja" 
                 className="text-white hover:text-purple-light transition-colors py-3 px-6"
                 onClick={() => setMobileMenuOpen(false)}
+                style={{ color: "#F8F8F8" }}
               >
                 Rezerwacja
               </Link>
@@ -116,6 +121,7 @@ export default function Navbar() {
                 href="/kontakt" 
                 className="text-white hover:text-purple-light transition-colors py-3 px-6"
                 onClick={() => setMobileMenuOpen(false)}
+                style={{ color: "#F8F8F8" }}
               >
                 Kontakt
               </Link>
