@@ -82,14 +82,14 @@ export default function TestimonialsSection() {
               >
                 <path
                   d="M14.4 24H8V16H16V24C16 32.8 8.8 36 8.8 36L6.4 32.8C10.4 30.4 14.4 28 14.4 24ZM30.4 24H24V16H32V24C32 32.8 24.8 36 24.8 36L22.4 32.8C26.4 30.4 30.4 28 30.4 24Z"
-                  fill="#d4af37"
+                  fill="#8A3793"
                 />
               </svg>
             </div>
 
             <div className="mb-6 pt-6">
               <p className="text-xl italic text-gray-300">
-                "{testimonials[activeIndex].text}"
+                &ldquo;{testimonials[activeIndex].text}&rdquo;
               </p>
             </div>
 

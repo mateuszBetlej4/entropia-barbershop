@@ -15,7 +15,7 @@ export default function AboutSection() {
             {/* Fallback dla obrazu */}
             {imageError1 && (
               <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center">
-                <div className="text-amber-400 text-2xl font-bold">ENTROPIA BARBERSHOP</div>
+                <div className="text-purple-light text-2xl font-bold">ENTROPIA BARBERSHOP</div>
               </div>
             )}
             <Image
@@ -39,18 +39,18 @@ export default function AboutSection() {
             
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div>
-                <div className="text-amber-400 text-4xl font-bold mb-2">5+</div>
+                <div className="text-purple-light text-4xl font-bold mb-2">5+</div>
                 <p className="text-gray-400">Lat doświadczenia</p>
               </div>
               <div>
-                <div className="text-amber-400 text-4xl font-bold mb-2">1000+</div>
+                <div className="text-purple-light text-4xl font-bold mb-2">1000+</div>
                 <p className="text-gray-400">Zadowolonych klientów</p>
               </div>
             </div>
             
             <Link 
               href="/o-nas" 
-              className="inline-block bg-amber-500 hover:bg-amber-600 text-black font-medium py-3 px-8 rounded-sm transition-colors"
+              className="inline-block bg-purple hover:bg-purple-light text-white font-medium py-3 px-8 rounded-sm transition-colors"
             >
               Poznaj nas lepiej
             </Link>

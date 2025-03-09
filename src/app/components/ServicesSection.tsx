@@ -49,7 +49,7 @@ export default function ServicesSection() {
         <div className="text-center mt-12">
           <Link 
             href="/uslugi" 
-            className="inline-block border border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-black font-medium py-3 px-8 rounded-sm transition-colors"
+            className="inline-block border border-purple-light text-purple-light hover:bg-purple-light hover:text-white font-medium py-3 px-8 rounded-sm transition-colors"
           >
             Zobacz wszystkie usługi
           </Link>

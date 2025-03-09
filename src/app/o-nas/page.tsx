@@ -29,7 +29,7 @@ export default function AboutPage() {
                 Entropia Barbershop powstał z pasji do sztuki barbierskiej i chęci stworzenia wyjątkowego miejsca dla mężczyzn w Krośnie. Założony w 2018 roku przez Szymona Rechziegla, szybko stał się rozpoznawalnym punktem na mapie miasta.
               </p>
               <p className="text-gray-300 mb-4">
-                Nazwa "Entropia" symbolizuje naszą filozofię – wierzymy, że każda zmiana wyglądu to krok w kierunku większej harmonii i pewności siebie. Dążymy do perfekcji w każdym aspekcie naszej pracy, łącząc tradycyjne techniki barbierskie z nowoczesnymi trendami.
+                Nazwa &ldquo;Entropia&rdquo; symbolizuje naszą filozofię – wierzymy, że każda zmiana wyglądu to krok w kierunku większej harmonii i pewności siebie. Dążymy do perfekcji w każdym aspekcie naszej pracy, łącząc tradycyjne techniki barbierskie z nowoczesnymi trendami.
               </p>
               <p className="text-gray-300">
                 Przez lata zdobyliśmy zaufanie setek klientów, którzy regularnie wracają do nas po kolejną dawkę profesjonalnej pielęgnacji i unikalnej atmosfery.
@@ -71,7 +71,7 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-zinc-900 p-8 rounded-md">
-              <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mb-6 text-black">
+              <div className="w-16 h-16 bg-purple rounded-full flex items-center justify-center mb-6 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
@@ -83,7 +83,7 @@ export default function AboutPage() {
             </div>
             
             <div className="bg-zinc-900 p-8 rounded-md">
-              <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mb-6 text-black">
+              <div className="w-16 h-16 bg-purple rounded-full flex items-center justify-center mb-6 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -95,7 +95,7 @@ export default function AboutPage() {
             </div>
             
             <div className="bg-zinc-900 p-8 rounded-md">
-              <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mb-6 text-black">
+              <div className="w-16 h-16 bg-purple rounded-full flex items-center justify-center mb-6 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                 </svg>

@@ -45,7 +45,7 @@ export default function ContactSection() {
         phone: "",
         message: "",
       });
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         success: false,
         message: "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później.",

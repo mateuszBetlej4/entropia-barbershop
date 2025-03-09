@@ -25,7 +25,7 @@ export default function Error({
       <p className="text-gray-400 mb-6">Przepraszamy za utrudnienia. Spróbuj odświeżyć stronę lub wróć później.</p>
       <button
         onClick={() => reset()}
-        className="bg-amber-500 hover:bg-amber-600 text-black font-medium py-3 px-6 rounded-md transition-colors"
+        className="bg-purple hover:bg-purple-light text-white font-medium py-3 px-6 rounded-md transition-colors"
       >
         Spróbuj ponownie
       </button>
