@@ -13,7 +13,7 @@ export default function TermsPage() {
           <section className="mb-10">
             <h2 className="text-2xl font-bold text-white mb-4">§1. Postanowienia ogólne</h2>
             <p className="mb-4">
-              1. Niniejszy regulamin określa zasady korzystania z usług świadczonych przez Entropia Barbershop Szymon Rechziegel z siedzibą w Krośnie przy ul. Krakowskiej 37, 38-400 Krosno, NIP: [numer NIP], zwanym dalej "Salonem".
+              1. Niniejszy regulamin określa zasady korzystania z usług świadczonych przez Entropia Barbershop Szymon Rechziegel z siedzibą w Krośnie przy ul. Krakowskiej 37, 38-400 Krosno, NIP: [numer NIP], zwanym dalej &quot;Salonem&quot;.
             </p>
             <p className="mb-4">
               2. Korzystanie z usług Salonu oznacza akceptację niniejszego regulaminu.
